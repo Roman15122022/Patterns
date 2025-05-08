@@ -1,11 +1,9 @@
-// Базовий інтерфейс
 class Notifier {
     send(message) {
         console.log(`Email: ${message}`);
     }
 }
 
-// Базовий декоратор
 class NotifierDecorator {
     constructor(notifier) {
         this.notifier = notifier;
@@ -16,7 +14,6 @@ class NotifierDecorator {
     }
 }
 
-// Декоратор для SMS
 class SMSDecorator extends NotifierDecorator {
     send(message) {
         super.send(message);
@@ -24,7 +21,6 @@ class SMSDecorator extends NotifierDecorator {
     }
 }
 
-// Декоратор для Facebook
 class FacebookDecorator extends NotifierDecorator {
     send(message) {
         super.send(message);
@@ -32,7 +28,6 @@ class FacebookDecorator extends NotifierDecorator {
     }
 }
 
-// Декоратор для Slack
 class SlackDecorator extends NotifierDecorator {
     send(message) {
         super.send(message);
@@ -40,8 +35,7 @@ class SlackDecorator extends NotifierDecorator {
     }
 }
 
-// 👨‍💻 Клієнтський код
-let notifier = new Notifier(); // лише email
+let notifier = new Notifier();
 notifier = new SMSDecorator(notifier); // email + SMS
 notifier = new FacebookDecorator(notifier); // email + SMS + Facebook
 notifier = new SlackDecorator(notifier); // email + SMS + Facebook + Slack
